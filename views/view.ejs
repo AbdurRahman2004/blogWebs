@@ -1,0 +1,60 @@
+<%- include("partials/header.ejs") %>
+
+<!--Content after adding database (using array)-->
+
+<!-- Java script for data and time-->
+
+<%  var currentdate = new Date();
+    var datetime = currentdate.getDay() + "/" + currentdate.getMonth() 
+    + "/" + currentdate.getFullYear() +",  " + currentdate.getHours() + ":" 
+    + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+    
+ %>
+
+
+<div class="holder">
+    <% if (locals.posts.length === 0)  { %>
+
+    <div class="contents">
+   
+            <h3 id="no-content"> OOPS ! &#128533; No Blogs, Create your own  Blogs &#128516;</h3>
+        
+    </div>
+    
+
+    <div class="profile">
+        <div class="image">
+            <img src="images/cat.png" alt="" srcset="">
+        </div>
+
+        <p id="name">Abdur Rahman</p>
+        <p><%= datetime %></p>
+        <p> Spend  Your Time with Valuable blogs </p>
+
+    </div>
+
+
+    
+
+        <% } else  { %>
+
+        <div class="post-content">
+
+            <% posts.forEach(function(post) { %>
+                
+                <h7><%= post.date %></h7>
+                <h2><a href="/edit/<%= posts.indexOf(post) %>"><%= post.title %></a></h2>
+                <p><%= post.content %></p>
+                <span class="custom-br"></span>
+            <% }); } %>
+            
+
+    </div>
+
+</div>
+
+
+
+
+<%- include("partials/footer.ejs") %>
